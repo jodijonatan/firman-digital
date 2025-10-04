@@ -1,4 +1,3 @@
-// src/components/DailyVerse.jsx
 import React, { useState, useEffect } from "react";
 import { getChapterContent } from "../api/bibleApi";
 import { useBible } from "../context/BibleContext";

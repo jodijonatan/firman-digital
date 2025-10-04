@@ -1,8 +1,7 @@
-// src/components/VerseDisplay.jsx
 import React, { useState, useEffect } from "react";
 import { useBible } from "../context/BibleContext";
 import { getChapterContent } from "../api/bibleApi";
-import { BookmarkIcon } from "@heroicons/react/24/solid"; // Asumsi Heroicons terinstal
+import { BookmarkIcon } from "@heroicons/react/24/solid";
 
 const VerseDisplay = () => {
   const { selectedChapterId, toggleBookmark, getBookAndChapterRef } =
@@ -19,7 +18,6 @@ const VerseDisplay = () => {
             setContentHtml(data.content);
           } else {
             setContentHtml(
-              // '<p class="text-red-500">Konten pasal tidak ditemukan. Cek BIBLE_ID atau API Key Anda.</p>'
               '<p class="text-red-500">Konten pasal tidak ditemukan.</p>'
             );
           }

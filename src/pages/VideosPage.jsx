@@ -1,7 +1,6 @@
 import React from "react";
-import Header from "../components/Header"; // Asumsi Anda menggunakan Header yang sama
+import Header from "../components/Header";
 
-// --- MOCK DATA (Ganti dengan data dari API di proyek nyata) ---
 const mockVideos = [
   {
     id: 1,
@@ -67,7 +66,7 @@ const VideosPage = () => {
             Video Renungan & Pembelajaran Katolik
           </h1>
           <p className="text-xl text-gray-600">
-            Perdalam iman Anda dengan berbagai video pilihan seputar ajaran,
+            Perdalam iman kamu dengan berbagai video pilihan seputar ajaran,
             sakramen, dan sejarah Gereja.
           </p>
         </div>

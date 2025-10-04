@@ -1,4 +1,3 @@
-// src/components/Bookmarks.jsx
 import React from "react";
 import { useBible } from "../context/BibleContext";
 import { TrashIcon, BookOpenIcon } from "@heroicons/react/24/outline";

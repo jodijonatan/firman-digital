@@ -1,4 +1,3 @@
-// src/components/QuickSearch.jsx
 import React, { useState } from "react";
 import { useBible } from "../context/BibleContext";
 import { searchBible } from "../api/bibleApi";

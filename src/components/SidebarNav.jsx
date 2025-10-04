@@ -1,4 +1,3 @@
-// src/components/SidebarNav.jsx
 import React, { useState, useEffect } from "react";
 import { useBible } from "../context/BibleContext";
 import { getChapters } from "../api/bibleApi";
