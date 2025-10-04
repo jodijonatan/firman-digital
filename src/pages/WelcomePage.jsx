@@ -57,16 +57,16 @@ const WelcomePage = () => {
 
               <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
                 <a
-                  href="/app/home"
+                  href="/bible"
                   className="px-8 py-3 rounded-lg font-bold text-white bg-sky-700 hover:bg-sky-800 transition duration-300 shadow-md transform hover:scale-[1.02]"
                 >
-                  Mulai Membaca Sekarang
+                  Baca Firman Tuhan
                 </a>
                 <a
-                  href="/app/daily-verse"
+                  href="/videos"
                   className="px-8 py-3 rounded-lg font-bold text-sky-700 bg-transparent border-2 border-sky-700 hover:bg-sky-700 hover:text-white transition duration-300 transform hover:scale-[1.02]"
                 >
-                  Ayat Harian
+                  Jelalahi Video
                 </a>
               </div>
             </div>
@@ -105,8 +105,8 @@ const WelcomePage = () => {
                 Kami hadir untuk memfasilitasi perjalanan spiritual Anda,
                 menyediakan platform yang bersih dan mudah diakses untuk membaca
                 serta merenungkan Kitab Suci. Dengan fokus pada tradisi
-                **Katolik**, kami menyajikan Alkitab dalam antarmuka yang
-                modern.
+                <span className="font-semibold"> Katolik</span>, kami menyajikan
+                Alkitab dalam antarmuka yang modern.
               </p>
               <p className="text-lg text-gray-700">
                 Komunitas kami berdedikasi untuk mendukung pertumbuhan iman

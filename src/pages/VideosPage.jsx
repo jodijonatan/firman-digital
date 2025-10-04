@@ -5,39 +5,21 @@ import Header from "../components/Header"; // Asumsi Anda menggunakan Header yan
 const mockVideos = [
   {
     id: 1,
-    title: "Mengapa Kita Perlu Mengikuti Misa Setiap Minggu?",
-    channel: "Gereja Katolik Official",
+    title: "Kehidupan Yesus",
+    channel: "Jesus.net",
     thumbnailUrl:
-      "https://via.placeholder.com/320x180/4682b4/ffffff?text=MISA+MINGGU",
-    duration: "12:45",
-    link: "https://www.youtube.com/watch?v=...", // Ganti dengan link YouTube yang sebenarnya
+      "https://i.ytimg.com/vi/JzKyVbOx1lA/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLC-qu1oZVFGdE2yoiCisC5dLaJUBg",
+    duration: "2:56:23",
+    link: "https://www.youtube.com/watch?v=X_ica-hQu8k",
   },
   {
     id: 2,
-    title: "Sejarah Singkat Kehidupan Santo Fransiskus Assisi",
-    channel: "Kisah Para Kudus",
+    title: "The Passion of the Christ",
+    channel: "Elisabeth",
     thumbnailUrl:
-      "https://via.placeholder.com/320x180/8fbc8f/ffffff?text=SANTO+FRANSISKUS",
-    duration: "08:10",
-    link: "https://www.youtube.com/watch?v=...",
-  },
-  {
-    id: 3,
-    title: "Doa Rosario dan Maknanya di Bulan Maria",
-    channel: "Katolik Renungan",
-    thumbnailUrl:
-      "https://via.placeholder.com/320x180/cd5c5c/ffffff?text=DOA+ROSARIO",
-    duration: "20:00",
-    link: "https://www.youtube.com/watch?v=...",
-  },
-  {
-    id: 4,
-    title: "Tanya Jawab Seputar Sakramen Ekaristi",
-    channel: "Veritas Channel",
-    thumbnailUrl:
-      "https://via.placeholder.com/320x180/ffebcd/000000?text=SAKRAMEN+EKARISTI",
-    duration: "15:30",
-    link: "https://www.youtube.com/watch?v=...",
+      "https://i.ytimg.com/vi/BxeelICKWrs/hqdefault.jpg?sqp=-oaymwEnCOADEI4CSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLA4TmODz0cdlgPoqIAR3phmhaPUgg",
+    duration: "2:06:32",
+    link: "https://www.youtube.com/watch?v=BxeelICKWrs",
   },
 ];
 // ----------------------------------------------------------------
@@ -90,11 +72,11 @@ const VideosPage = () => {
           </p>
         </div>
 
-        {/* Kotak Pencarian (Opsional - Bisa diimplementasikan di sini) */}
+        {/* Kotak Pencarian */}
         {/* <div className="mb-10 max-w-xl mx-auto">
-          <input 
-            type="text" 
-            placeholder="Cari topik video..." 
+          <input
+            type="text"
+            placeholder="Cari topik video..."
             className="w-full p-3 border-2 border-gray-300 rounded-lg focus:ring-sky-500 focus:border-sky-500 transition duration-150"
           />
         </div> */}
@@ -107,7 +89,7 @@ const VideosPage = () => {
         </div>
 
         {/* Tombol Load More (Opsional) */}
-        {mockVideos.length > 0 && (
+        {/* {mockVideos.length > 0 && (
           <div className="text-center mt-12">
             <button
               className="px-8 py-3 rounded-lg font-bold text-white bg-sky-700 hover:bg-sky-800 transition duration-300 shadow-md"
@@ -116,7 +98,7 @@ const VideosPage = () => {
               Lihat Video Lainnya
             </button>
           </div>
-        )}
+        )} */}
       </div>
     </div>
   );
