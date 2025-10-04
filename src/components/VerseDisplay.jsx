@@ -19,7 +19,8 @@ const VerseDisplay = () => {
             setContentHtml(data.content);
           } else {
             setContentHtml(
-              '<p class="text-red-500">Konten pasal tidak ditemukan. Cek BIBLE_ID atau API Key Anda.</p>'
+              // '<p class="text-red-500">Konten pasal tidak ditemukan. Cek BIBLE_ID atau API Key Anda.</p>'
+              '<p class="text-red-500">Konten pasal tidak ditemukan.</p>'
             );
           }
         })
@@ -47,12 +48,12 @@ const VerseDisplay = () => {
   return (
     <div className="p-4 md:p-8 bg-white shadow-xl rounded-lg">
       <div className="flex justify-between items-center mb-6 border-b pb-4">
-        <h2 className="text-3xl font-extrabold text-indigo-800">
+        <h2 className="text-3xl font-extrabold text-sky-800">
           {getBookAndChapterRef.chapterRef}
         </h2>
         <button
           onClick={handleToggleChapterBookmark}
-          className="p-2 rounded-full bg-indigo-100 text-indigo-600 hover:bg-indigo-200 transition duration-200"
+          className="p-2 rounded-full bg-sky-100 text-sky-600 hover:bg-sky-200 transition duration-200"
           title="Bookmark Pasal Ini"
         >
           <BookmarkIcon className="w-6 h-6" />
@@ -60,7 +61,7 @@ const VerseDisplay = () => {
       </div>
 
       {loading ? (
-        <div className="text-center text-xl text-indigo-600 animate-pulse">
+        <div className="text-center text-xl text-sky-600 animate-pulse">
           Memuat Firman Tuhan...
         </div>
       ) : (

@@ -12,7 +12,7 @@ const Bookmarks = () => {
 
   return (
     <div className="p-4 border-t border-gray-200 mt-4">
-      <h3 className="text-xl font-semibold mb-3 text-indigo-700">
+      <h3 className="text-xl font-semibold mb-3 text-sky-700">
         Tersimpan (Bookmark)
       </h3>
 
@@ -31,7 +31,7 @@ const Bookmarks = () => {
                 className="flex-1 cursor-pointer"
                 onClick={() => handleGoToBookmark(b.chapterId)}
               >
-                <p className="font-bold text-indigo-700 hover:text-indigo-900 transition">
+                <p className="font-bold text-sky-700 hover:text-sky-900 transition">
                   {b.reference}
                 </p>
                 <p className="text-xs text-gray-500 mt-1 line-clamp-2">

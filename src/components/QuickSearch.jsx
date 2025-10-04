@@ -51,16 +51,16 @@ const QuickSearch = () => {
       {(loading || results.length > 0) && (
         <div className="absolute z-20 w-full mt-2 bg-white border border-gray-300 rounded-lg shadow-xl max-h-60 overflow-y-auto left-0 right-0 mx-auto transform translate-y-full">
           {loading && (
-            <div className="p-3 text-center text-indigo-600">Mencari...</div>
+            <div className="p-3 text-center text-sky-600">Mencari...</div>
           )}
 
           {results.map((verse) => (
             <div
               key={verse.id}
               onClick={() => handleResultClick(verse.chapterId)}
-              className="p-3 border-b cursor-pointer hover:bg-indigo-50"
+              className="p-3 border-b cursor-pointer hover:bg-sky-50"
             >
-              <p className="font-semibold text-indigo-700">{verse.reference}</p>
+              <p className="font-semibold text-sky-700">{verse.reference}</p>
               <p className="text-sm text-gray-600 line-clamp-2">{verse.text}</p>
             </div>
           ))}

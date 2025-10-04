@@ -44,13 +44,13 @@ const SidebarNav = () => {
 
   return (
     <div className="p-4 space-y-4">
-      <h2 className="text-2xl font-bold text-indigo-700">Navigasi Alkitab</h2>
+      <h2 className="text-2xl font-bold text-sky-700">Navigasi Alkitab</h2>
 
       {/* Pemilih Kitab */}
       <div className="relative">
         <button
           onClick={() => setIsBookListOpen(!isBookListOpen)}
-          className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded-lg flex justify-between items-center transition duration-200"
+          className="w-full bg-sky-600 hover:bg-sky-700 text-white font-semibold py-2 px-4 rounded-lg flex justify-between items-center transition duration-200"
         >
           {selectedBook
             ? selectedBook.name
@@ -81,8 +81,8 @@ const SidebarNav = () => {
               <div
                 key={book.id}
                 onClick={() => handleBookSelect(book)}
-                className={`py-2 px-4 cursor-pointer hover:bg-indigo-50 ${
-                  selectedBook?.id === book.id ? "bg-indigo-100 font-bold" : ""
+                className={`py-2 px-4 cursor-pointer hover:bg-sky-50 ${
+                  selectedBook?.id === book.id ? "bg-sky-100 font-bold" : ""
                 }`}
               >
                 {book.name}
@@ -93,7 +93,7 @@ const SidebarNav = () => {
       </div>
 
       {/* Daftar Pasal */}
-      <h3 className="text-xl font-semibold mt-4 text-indigo-700">Pasal</h3>
+      <h3 className="text-xl font-semibold mt-4 text-sky-700">Pasal</h3>
       {loadingChapters ? (
         <p className="text-gray-500">Memuat pasal...</p>
       ) : (
@@ -105,7 +105,7 @@ const SidebarNav = () => {
               className={`p-2 rounded-lg text-sm transition duration-200 
                 ${
                   selectedChapterId === chapter.id
-                    ? "bg-indigo-700 text-white shadow-md"
+                    ? "bg-sky-700 text-white shadow-md"
                     : "bg-gray-200 hover:bg-gray-300 text-gray-800"
                 }`}
             >
