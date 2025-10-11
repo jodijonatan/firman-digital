@@ -54,7 +54,7 @@ const VerseDisplay = () => {
           className="p-2 rounded-full bg-sky-100 text-sky-600 hover:bg-sky-200 transition duration-200"
           title="Bookmark Pasal Ini"
         >
-          <BookmarkIcon className="w-6 h-6" />
+          <BookmarkIcon className="w-6 h-6 cursor-pointer" />
         </button>
       </div>
 

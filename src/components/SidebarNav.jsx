@@ -105,7 +105,7 @@ const SidebarNav = () => {
                 ${
                   selectedChapterId === chapter.id
                     ? "bg-sky-700 text-white shadow-md"
-                    : "bg-gray-200 hover:bg-gray-300 text-gray-800"
+                    : "bg-gray-200 hover:bg-gray-300 text-gray-800 cursor-pointer"
                 }`}
             >
               {/* Ambil hanya nomor pasal (misal: '1') */}
