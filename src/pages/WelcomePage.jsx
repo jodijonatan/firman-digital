@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import About from "../components/About";
@@ -37,18 +38,18 @@ const WelcomePage = () => {
               </p>
 
               <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
-                <a
-                  href="/alkitab"
+                <Link
+                  to="/alkitab"
                   className="px-8 py-3 rounded-lg font-bold text-white bg-sky-700 hover:bg-sky-800 transition duration-300 shadow-md"
                 >
                   Baca Firman Tuhan
-                </a>
-                <a
-                  href="/video"
+                </Link>
+                <Link
+                  to="/video"
                   className="px-8 py-3 rounded-lg font-bold text-sky-700 bg-transparent border-2 border-sky-700 hover:bg-sky-700 hover:text-white transition duration-300"
                 >
                   Jelalahi Video
-                </a>
+                </Link>
               </div>
             </div>
           </section>
