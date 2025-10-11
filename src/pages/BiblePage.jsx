@@ -5,6 +5,7 @@ import QuickSearch from "../components/QuickSearch";
 import Bookmarks from "../components/Bookmarks";
 import DailyVerse from "../components/DailyVerse";
 import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 const BiblePage = () => {
   return (
@@ -31,6 +32,7 @@ const BiblePage = () => {
           </main>
         </div>
       </div>
+      <Footer />
     </BibleProvider>
   );
 };

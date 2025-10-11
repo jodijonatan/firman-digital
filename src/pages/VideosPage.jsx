@@ -1,5 +1,6 @@
 import React from "react";
 import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 const mockVideos = [
   {
@@ -55,24 +56,25 @@ const VideoCard = ({ video }) => {
 
 const VideosPage = () => {
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Header (Asumsi sudah full-width) */}
-      <Header />
+    <>
+      <div className="min-h-screen bg-gray-50">
+        {/* Header (Asumsi sudah full-width) */}
+        <Header />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-        {/* Judul Halaman */}
-        <div className="text-center mb-12">
-          <h1 className="text-4xl font-extrabold text-gray-800 font-serif mb-2">
-            Video Renungan & Pembelajaran Katolik
-          </h1>
-          <p className="text-xl text-gray-600">
-            Perdalam iman kamu dengan berbagai video pilihan seputar ajaran,
-            sakramen, dan sejarah Gereja.
-          </p>
-        </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+          {/* Judul Halaman */}
+          <div className="text-center mb-12">
+            <h1 className="text-4xl font-extrabold text-gray-800 font-serif mb-2">
+              Video Renungan & Pembelajaran Katolik
+            </h1>
+            <p className="text-xl text-gray-600">
+              Perdalam iman kamu dengan berbagai video pilihan seputar ajaran,
+              sakramen, dan sejarah Gereja.
+            </p>
+          </div>
 
-        {/* Kotak Pencarian */}
-        {/* <div className="mb-10 max-w-xl mx-auto">
+          {/* Kotak Pencarian */}
+          {/* <div className="mb-10 max-w-xl mx-auto">
           <input
             type="text"
             placeholder="Cari topik video..."
@@ -80,15 +82,15 @@ const VideosPage = () => {
           />
         </div> */}
 
-        {/* Video Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-          {mockVideos.map((video) => (
-            <VideoCard key={video.id} video={video} />
-          ))}
-        </div>
+          {/* Video Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+            {mockVideos.map((video) => (
+              <VideoCard key={video.id} video={video} />
+            ))}
+          </div>
 
-        {/* Tombol Load More (Opsional) */}
-        {/* {mockVideos.length > 0 && (
+          {/* Tombol Load More (Opsional) */}
+          {/* {mockVideos.length > 0 && (
           <div className="text-center mt-12">
             <button
               className="px-8 py-3 rounded-lg font-bold text-white bg-sky-700 hover:bg-sky-800 transition duration-300 shadow-md"
@@ -98,8 +100,10 @@ const VideosPage = () => {
             </button>
           </div>
         )} */}
+        </div>
       </div>
-    </div>
+      <Footer />
+    </>
   );
 };
 
