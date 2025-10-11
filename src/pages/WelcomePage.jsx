@@ -39,13 +39,13 @@ const WelcomePage = () => {
               <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
                 <a
                   href="/alkitab"
-                  className="px-8 py-3 rounded-lg font-bold text-white bg-sky-700 hover:bg-sky-800 transition duration-300 shadow-md transform hover:scale-[1.02]"
+                  className="px-8 py-3 rounded-lg font-bold text-white bg-sky-700 hover:bg-sky-800 transition duration-300 shadow-md"
                 >
                   Baca Firman Tuhan
                 </a>
                 <a
                   href="/video"
-                  className="px-8 py-3 rounded-lg font-bold text-sky-700 bg-transparent border-2 border-sky-700 hover:bg-sky-700 hover:text-white transition duration-300 transform hover:scale-[1.02]"
+                  className="px-8 py-3 rounded-lg font-bold text-sky-700 bg-transparent border-2 border-sky-700 hover:bg-sky-700 hover:text-white transition duration-300"
                 >
                   Jelalahi Video
                 </a>

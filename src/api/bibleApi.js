@@ -37,8 +37,11 @@ export const getChapters = async (bookId) => {
 
 export const getChapterContent = async (chapterId) => {
   try {
+    // Bersihkan jika chapterId punya prefix Bible ID
+    const cleanedId = chapterId.replace(`${BIBLE_ID}.`, "");
+
     const response = await api.get(
-      `/bibles/${BIBLE_ID}/chapters/${chapterId}`,
+      `/bibles/${BIBLE_ID}/chapters/${cleanedId}`,
       {
         params: {
           "content-type": "text",
@@ -49,9 +52,13 @@ export const getChapterContent = async (chapterId) => {
         },
       }
     );
+
     return response.data.data;
   } catch (error) {
-    console.error("Error fetching chapter content:", error);
+    console.error(
+      "Error fetching chapter content:",
+      error.response?.data || error.message
+    );
     return null;
   }
 };

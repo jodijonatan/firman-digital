@@ -12,7 +12,7 @@ const DailyVerse = () => {
 
   const BIBLE_ID_FROM_ENV = import.meta.env.VITE_BIBLE_ID;
 
-  const dailyChapterId = `${BIBLE_ID_FROM_ENV}.PSA.23`;
+  const dailyChapterId = `${BIBLE_ID_FROM_ENV}.GEN.1`;
 
   useEffect(() => {
     setLoading(true);
