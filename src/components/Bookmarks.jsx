@@ -42,7 +42,7 @@ const Bookmarks = () => {
                 className="ml-3 p-1 text-red-500 hover:text-red-700 transition"
                 title="Hapus Bookmark"
               >
-                <TrashIcon className="w-5 h-5" />
+                <TrashIcon className="w-5 h-5 cursor-pointer" />
               </button>
             </li>
           ))}
