@@ -73,9 +73,12 @@ export const searchBible = async (query) => {
         sort: "relevance",
       },
     });
-    return response.data.data.searchResults.verses;
+
+    const verses = response.data.data.verses || []; // ganti struktur di sini
+    console.log("Search results:", verses);
+    return verses;
   } catch (error) {
-    console.error("Error searching:", error);
+    console.error("Error searching:", error.response?.data || error.message);
     return [];
   }
 };

@@ -64,10 +64,20 @@ export const BibleProvider = ({ children }) => {
     if (!selectedChapterId || !books.length)
       return { bookName: "", chapterRef: "" };
 
-    // Asumsi format ID: BIBLEID.BOOKID.CHAPTERNO
     const parts = selectedChapterId.split(".");
-    const bookId = parts[1];
-    const chapterNumber = parts[2];
+    let bookId = "";
+    let chapterNumber = "";
+
+    // Cari ID kitab & nomor pasal sesuai format yang ada
+    if (parts.length === 3) {
+      // Format: BIBLEID.BOOKID.CHAPTERNO
+      bookId = parts[1];
+      chapterNumber = parts[2];
+    } else if (parts.length === 2) {
+      // Format: BOOKID.CHAPTERNO
+      bookId = parts[0];
+      chapterNumber = parts[1];
+    }
 
     const currentBook = books.find((b) => b.id === bookId);
 
@@ -75,7 +85,7 @@ export const BibleProvider = ({ children }) => {
       bookName: currentBook ? currentBook.name : "Memuat...",
       chapterRef: currentBook
         ? `${currentBook.name} Pasal ${chapterNumber}`
-        : `Pasal ${chapterNumber}`,
+        : `Pasal ${chapterNumber || ""}`,
     };
   }, [selectedChapterId, books]);
 
