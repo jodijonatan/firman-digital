@@ -40,7 +40,7 @@ const DailyVerse = () => {
   };
 
   return (
-    <div className="p-4 bg-white shadow-md rounded-lg border-l-4 border-yellow-500">
+    <div className="p-4 bg-white shadow-md rounded-lg border-l-4 border-yellow-500 mt-14 md:mt-0">
       <h3 className="text-xl font-bold text-yellow-700 mb-2">Ayat Harian ✨</h3>
       <p className="italic text-gray-700 mb-3 text-base">
         {loading ? "Memuat ayat..." : verseText}

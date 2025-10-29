@@ -32,13 +32,15 @@ const BiblePage = () => {
             </div>
           </aside>
 
-          {/* Tombol toggle sidebar di HP */}
-          <button
-            onClick={() => setSidebarOpen(!sidebarOpen)}
-            className="absolute top-4 left-4 z-50 md:hidden bg-sky-600 text-white px-3 py-2 rounded-lg shadow-md"
-          >
-            {sidebarOpen ? "Tutup" : "Menu"}
-          </button>
+          {/* Tombol toggle sidebar di HP (hanya muncul kalau sidebar tertutup) */}
+          {!sidebarOpen && (
+            <button
+              onClick={() => setSidebarOpen(true)}
+              className="cursor-pointer absolute top-4 left-4 z-50 md:hidden bg-sky-600 text-white px-3 py-2 rounded-lg shadow-md"
+            >
+              Menu
+            </button>
+          )}
 
           {/* Overlay (untuk menutup sidebar di HP) */}
           {sidebarOpen && (
