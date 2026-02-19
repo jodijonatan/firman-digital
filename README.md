@@ -37,13 +37,21 @@ A modern, responsive digital Bible application built with React, designed to pro
    npm install
    ```
 
-3. Start the development server:
+3. Salin file lingkungan dari `.env.example` ke `.env`:
+
+   ```bash
+   cp .env.example .env
+   ```
+
+   Setelah disalin, sesuaikan nilai di file `.env`.
+
+4. Start the development server:
 
    ```bash
    npm run dev
    ```
 
-4. Open your browser and navigate to `http://localhost:5173` (or the port shown in the terminal).
+5. Open your browser and navigate to `http://localhost:5173` (or the port shown in the terminal).
 
 ## Usage
 
