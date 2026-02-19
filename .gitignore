@@ -1,4 +1,13 @@
-# Logs
+# Ignore environment files
+.env
+
+# Node / build artifacts
+node_modules/
+dist/
+
+# Editor files
+.vscode/
+.DS_Store# Logs
 logs
 *.log
 npm-debug.log*
