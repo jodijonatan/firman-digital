@@ -17,7 +17,7 @@ const CURATED_VERSES = [
   { id: "MAT.11", verse: "028", ref: "Matius 11:28" },
   { id: "HEB.11", verse: "001", ref: "Ibrani 11:1" },
   { id: "GAL.5", verse: "022", ref: "Galatia 5:22" },
-  { id: "PSA.119", verse: "105", ref: "Mazmur 119:105" },
+  { id: "GAL.5", verse: "001", ref: "Galatia 5:1" },
   { id: "PRO.16", verse: "003", ref: "Amsal 16:3" },
   { id: "2TI.1", verse: "007", ref: "2 Timotius 1:7" },
   { id: "PSA.27", verse: "001", ref: "Mazmur 27:1" },

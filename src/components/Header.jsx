@@ -23,7 +23,7 @@ const Header = () => {
     }`;
 
   return (
-    <header className="bg-gradient-to-r from-sky-900 via-sky-800 to-sky-900 text-white shadow-2xl sticky top-0 z-50">
+    <header className="bg-gradient-to-r from-sky-900 via-sky-800 to-sky-900 text-white shadow-2xl sticky top-0 z-[100]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
         {/* Logo */}
         <Link to="/" className="flex gap-3 items-center group flex-shrink-0">

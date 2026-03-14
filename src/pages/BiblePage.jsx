@@ -23,7 +23,7 @@ const BiblePage = () => {
           {/* Sidebar Drawer for Mobile & Persistent for Desktop */}
           <aside
             className={`
-              fixed md:static inset-y-0 left-0 z-50
+              fixed md:static top-[72px] md:top-0 bottom-0 left-0 z-40
               w-[85vw] md:w-80 lg:w-96
               bg-white border-r border-slate-200 
               transform transition-all duration-500 ease-in-out
@@ -31,8 +31,8 @@ const BiblePage = () => {
               overflow-y-auto overflow-x-hidden
             `}
           >
-            {/* Mobile Header for Sidebar */}
-            <div className="flex items-center justify-between p-6 md:hidden border-b border-slate-50">
+            {/* Mobile Header for Sidebar - Reduced padding for tighter fit */}
+            <div className="flex items-center justify-between p-4 md:hidden border-b border-slate-50">
                 <span className="font-black text-sky-900 tracking-tighter uppercase italic">Navigasi</span>
                 <button 
                     onClick={() => setSidebarOpen(false)}
@@ -52,7 +52,7 @@ const BiblePage = () => {
           <button
             onClick={() => setSidebarOpen(true)}
             className={`
-              fixed bottom-6 right-6 z-40 
+              fixed bottom-6 right-6 z-30 
               md:hidden 
               bg-sky-600 text-white 
               p-4 rounded-3xl shadow-2xl shadow-sky-600/40
@@ -64,10 +64,10 @@ const BiblePage = () => {
             <Bars3Icon className="size-7" />
           </button>
 
-          {/* Overlay for Mobile */}
+          {/* Overlay for Mobile - Starts below header */}
           <div
             className={`
-              fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-40 md:hidden
+              fixed top-[72px] inset-x-0 bottom-0 bg-slate-900/40 backdrop-blur-sm z-30 md:hidden
               transition-all duration-500
               ${sidebarOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}
             `}
