@@ -1,6 +1,8 @@
+// src/components/DailyVerse.jsx
 import React, { useState, useEffect } from "react";
 import { getChapterContent } from "../api/bibleApi";
 import { useBible } from "../context/BibleContext";
+import { SparklesIcon } from "@heroicons/react/24/solid";
 
 const DailyVerse = () => {
   const { setSelectedChapterId } = useBible();
@@ -12,44 +14,76 @@ const DailyVerse = () => {
 
   const BIBLE_ID_FROM_ENV = import.meta.env.VITE_BIBLE_ID;
 
+  // Untuk keperluan demo/MVP, kita ambil ayat pertama dari Kejadian 1
+  // Di masa depan, ini bisa berupa list ayat yang diundi secara harian.
   const dailyChapterId = `${BIBLE_ID_FROM_ENV}.GEN.1`;
 
   useEffect(() => {
+    let isMounted = true;
     setLoading(true);
-    // Mengambil konten pasal dan mengekstrak ayat 1
+    
     getChapterContent(dailyChapterId)
       .then((data) => {
-        if (data && data.content) {
-          // Cara yang sangat sederhana: Cari teks di dalam tag <span data-verse-id="...23001">
-          // Ini sangat bergantung pada struktur HTML API.Bible.
-          // Untuk keandalan, disarankan menggunakan endpoint /verses/{verseId} atau parsing HTML yang lebih baik.
-          const verseMatch = data.content.match(
-            /<span data-verse-id="[^"]+23001">(.+?)<\/span>/
-          );
-          if (verseMatch && verseMatch[1]) {
-            const cleanedText = verseMatch[1].replace(/<[^>]*>?/gm, "").trim();
-            setVerseText(cleanedText);
-          }
+        if (!isMounted || !data || !data.content) return;
+
+        // Parsing HTML yang lebih aman menggunakan DOMParser (jika di browser)
+        // Jika tidak, kita gunakan regex yang sedikit lebih robust tapi tetap waspada
+        // API Bible sering membungkus teks ayat dalam span dengan data-verse-id
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(data.content, "text/html");
+        
+        // Cari ayat pertama (biasanya diakhiri dengan '001')
+        const firstVerseSpan = doc.querySelector('span[data-verse-id$="001"]');
+        
+        if (firstVerseSpan) {
+          setVerseText(firstVerseSpan.textContent.trim());
+          setReference("Kejadian 1:1"); // Sesuai dengan GEN.1 ayat 001
         }
       })
-      .finally(() => setLoading(false));
-  }, []);
+      .catch(err => {
+        console.error("DailyVerse fetch error:", err);
+      })
+      .finally(() => {
+        if (isMounted) setLoading(false);
+      });
+
+    return () => { isMounted = false; };
+  }, [dailyChapterId]);
 
   const handleGoToVerse = () => {
     setSelectedChapterId(dailyChapterId);
   };
 
   return (
-    <div className="p-4 bg-white shadow-md rounded-lg border-l-4 border-yellow-500 mt-14 md:mt-0">
-      <h3 className="text-xl font-bold text-yellow-700 mb-2">Ayat Harian ✨</h3>
-      <p className="italic text-gray-700 mb-3 text-base">
-        {loading ? "Memuat ayat..." : verseText}
-      </p>
+    <div className="p-6 bg-gradient-to-br from-white to-sky-50 shadow-lg rounded-2xl border-l-8 border-yellow-400 relative overflow-hidden group">
+      {/* Background decoration */}
+      <div className="absolute -right-4 -top-4 text-yellow-100 opacity-50 group-hover:scale-110 transition-transform duration-500">
+        <SparklesIcon className="w-24 h-24" />
+      </div>
+
+      <h3 className="text-xl font-bold text-yellow-600 mb-3 flex items-center gap-2">
+        <SparklesIcon className="w-5 h-5" />
+        Ayat Harian
+      </h3>
+      
+      {loading ? (
+        <div className="space-y-2 animate-pulse">
+          <div className="h-4 bg-gray-200 rounded w-full"></div>
+          <div className="h-4 bg-gray-200 rounded w-3/4"></div>
+        </div>
+      ) : (
+        <p className="italic text-slate-700 mb-4 text-lg leading-relaxed font-serif">
+          "{verseText}"
+        </p>
+      )}
+
       <button
         onClick={handleGoToVerse}
-        className="text-sm font-semibold text-sky-600 hover:text-sky-800 transition"
+        disabled={loading}
+        className="text-sm font-bold text-sky-700 hover:text-sky-900 transition flex items-center gap-1 group/btn"
       >
-        {reference} &rarr;
+        <span>{reference}</span>
+        <span className="group-hover/btn:translate-x-1 transition-transform">&rarr;</span>
       </button>
     </div>
   );

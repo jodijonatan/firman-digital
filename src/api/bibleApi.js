@@ -12,10 +12,19 @@ const api = axios.create({
   },
 });
 
+// Simple in-memory cache
+const cache = {
+  books: null,
+  chapters: {}, // { bookId: chapters }
+  content: {}, // { chapterId: content }
+};
+
 export const getBooks = async () => {
+  if (cache.books) return cache.books;
   try {
     const response = await api.get(`/bibles/${BIBLE_ID}/books`);
-    return response.data.data;
+    cache.books = response.data.data;
+    return cache.books;
   } catch (error) {
     console.error("Error fetching books:", error);
     return [];
@@ -23,12 +32,15 @@ export const getBooks = async () => {
 };
 
 export const getChapters = async (bookId) => {
+  if (cache.chapters[bookId]) return cache.chapters[bookId];
   try {
     const response = await api.get(
       `/bibles/${BIBLE_ID}/books/${bookId}/chapters`
     );
     // Filter chapter dengan property reference (ini adalah pasal)
-    return response.data.data.filter((c) => c.reference);
+    const chapters = response.data.data.filter((c) => c.reference);
+    cache.chapters[bookId] = chapters;
+    return chapters;
   } catch (error) {
     console.error("Error fetching chapters:", error);
     return [];
@@ -36,6 +48,7 @@ export const getChapters = async (bookId) => {
 };
 
 export const getChapterContent = async (chapterId) => {
+  if (cache.content[chapterId]) return cache.content[chapterId];
   try {
     // Bersihkan jika chapterId punya prefix Bible ID
     const cleanedId = chapterId.replace(`${BIBLE_ID}.`, "");
@@ -53,7 +66,8 @@ export const getChapterContent = async (chapterId) => {
       }
     );
 
-    return response.data.data;
+    cache.content[chapterId] = response.data.data;
+    return cache.content[chapterId];
   } catch (error) {
     console.error(
       "Error fetching chapter content:",

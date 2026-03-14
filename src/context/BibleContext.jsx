@@ -5,6 +5,7 @@ import React, {
   useEffect,
   useContext,
   useMemo,
+  useCallback,
 } from "react";
 import { getBooks } from "../api/bibleApi";
 
@@ -24,20 +25,33 @@ export const BibleProvider = ({ children }) => {
   const [selectedBook, setSelectedBook] = useState(null);
   const [loadingBooks, setLoadingBooks] = useState(true);
 
-  // Fungsionalitas Bookmark menggunakan localStorage
+  // Fungsionalitas Bookmark menggunakan localStorage dengan validasi
   const [bookmarks, setBookmarks] = useState(() => {
-    const saved = localStorage.getItem("bible_bookmarks");
-    return saved ? JSON.parse(saved) : [];
+    try {
+      const saved = localStorage.getItem("bible_bookmarks");
+      if (!saved) return [];
+      const parsed = JSON.parse(saved);
+      // Validasi sederhana: pastikan ini adalah array
+      return Array.isArray(parsed) ? parsed : [];
+    } catch (error) {
+      console.error("Failed to parse bookmarks from localStorage:", error);
+      return [];
+    }
   });
 
   useEffect(() => {
     // Muat daftar kitab
+    let isMounted = true;
     getBooks().then((data) => {
+      if (!isMounted) return;
       setBooks(data);
       const defaultBook = data.find((b) => b.id === "GEN"); // Set default book
       setSelectedBook(defaultBook);
       setLoadingBooks(false);
     });
+    return () => {
+      isMounted = false;
+    };
   }, []);
 
   useEffect(() => {
@@ -45,20 +59,27 @@ export const BibleProvider = ({ children }) => {
     localStorage.setItem("bible_bookmarks", JSON.stringify(bookmarks));
   }, [bookmarks]);
 
-  const toggleBookmark = (reference, contentSnippet) => {
-    const existingBookmark = bookmarks.find((b) => b.reference === reference);
-    if (existingBookmark) {
-      setBookmarks(bookmarks.filter((b) => b.reference !== reference));
-    } else {
-      const newBookmark = {
-        reference,
-        contentSnippet,
-        chapterId: selectedChapterId,
-        id: Date.now(), // Unique ID
-      };
-      setBookmarks([...bookmarks, newBookmark]);
-    }
-  };
+  const toggleBookmark = useCallback(
+    (reference, contentSnippet) => {
+      setBookmarks((prev) => {
+        const existingBookmark = prev.find((b) => b.reference === reference);
+        if (existingBookmark) {
+          return prev.filter((b) => b.reference !== reference);
+        } else {
+          return [
+            ...prev,
+            {
+              reference,
+              contentSnippet,
+              chapterId: selectedChapterId,
+              id: Date.now(),
+            },
+          ];
+        }
+      });
+    },
+    [selectedChapterId]
+  );
 
   const getBookAndChapterRef = useMemo(() => {
     if (!selectedChapterId || !books.length)
@@ -89,17 +110,28 @@ export const BibleProvider = ({ children }) => {
     };
   }, [selectedChapterId, books]);
 
-  const value = {
-    books,
-    loadingBooks,
-    selectedBook,
-    setSelectedBook,
-    selectedChapterId,
-    setSelectedChapterId,
-    bookmarks,
-    toggleBookmark,
-    getBookAndChapterRef,
-  };
+  const value = useMemo(
+    () => ({
+      books,
+      loadingBooks,
+      selectedBook,
+      setSelectedBook,
+      selectedChapterId,
+      setSelectedChapterId,
+      bookmarks,
+      toggleBookmark,
+      getBookAndChapterRef,
+    }),
+    [
+      books,
+      loadingBooks,
+      selectedBook,
+      selectedChapterId,
+      bookmarks,
+      toggleBookmark,
+      getBookAndChapterRef,
+    ]
+  );
 
   return (
     <BibleContext.Provider value={value}>{children}</BibleContext.Provider>
